@@ -18,4 +18,8 @@ public class Booking {
     public int getNumberOfNights(){
         return this.numberOfNights;
     }
+
+    public int getBill(){
+        return this.numberOfNights * this.bedroom.provideNightlyRate();
+    }
 }

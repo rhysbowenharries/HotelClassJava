@@ -7,6 +7,8 @@ public class HotelTest {
 
     private Guest guest;
     private Bedroom bedroom;
+    private Bedroom bedroom2;
+    private Bedroom bedroom3;
     private ConferenceRoom conferenceRoom;
     private Hotel hotel;
 
@@ -14,6 +16,8 @@ public class HotelTest {
     public void before(){
         guest = new Guest("Rhys");
         bedroom = new Bedroom( 1, 2, "Double", 20);
+        bedroom2 = new Bedroom( 2, 3, "Double", 25);
+        bedroom3 = new Bedroom( 3, 4, "Double", 29);
         conferenceRoom = new ConferenceRoom( "Excelsior", 20);
         hotel = new Hotel();
     }
@@ -68,4 +72,16 @@ public class HotelTest {
         assertEquals(100, testBooking.getBill());
     }
 
+    @Test
+    public void cantCheckInToOccupiedRoom(){
+        hotel.checkInGuestToBedroom(bedroom, guest);
+        hotel.checkInGuestToBedroom(bedroom, guest);
+        assertEquals(1, bedroom.guestsInBedroomCount());
+    }
+
+    @Test
+    public void canReturnCollectionOfVacantRooms() {
+        hotel.checkInGuestToBedroom(bedroom, guest);
+        assertEquals(0, hotel.returnCollectionOfVacantRooms());
+    }
 }

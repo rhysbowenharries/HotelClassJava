@@ -4,7 +4,8 @@ public class Hotel {
 
     private ArrayList<Bedroom> bedrooms;
     private ArrayList<ConferenceRoom> conferenceRooms;
-    private Bedroom bedroom;
+
+
 
     public Hotel(){
         this.bedrooms = new ArrayList<Bedroom>();
@@ -20,7 +21,9 @@ public class Hotel {
     }
 
     public void checkInGuestToBedroom(Bedroom bedroom, Guest guest) {
-        bedroom.addGuestToRoom(guest);
+        if (bedroom.guestsInBedroomCount() == 0) {
+            bedroom.addGuestToRoom(guest);
+        }
     }
 
 

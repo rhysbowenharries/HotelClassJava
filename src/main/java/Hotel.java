@@ -43,4 +43,9 @@ public class Hotel {
     public void checkOutGuestConferenceRoom(ConferenceRoom conferenceRoom) {
         conferenceRoom.checkOutGuests();
     }
+
+    public Booking createBedRoomBooking(Bedroom bedroom, int numberOfNights){
+        Booking booking = new Booking(bedroom, numberOfNights);
+        return booking;
+    }
 }
